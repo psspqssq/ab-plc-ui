@@ -1,0 +1,22 @@
+{
+  "name": "ab-plc-ui",
+  "version": "1.0.0",
+  "description": "Allen Bradley 1400 I/O UI",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "PLC",
+    "Allen",
+    "Bradley",
+    "Nodejs"
+  ],
+  "author": "Pablo Silva",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15",
+    "nodepccc": "^0.1.17"
+  }
+}
