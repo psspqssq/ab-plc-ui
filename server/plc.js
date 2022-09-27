@@ -11,17 +11,43 @@ const modify = (address, value, callback) => {
   callback({ address: tag(address), value });
 };
 
+const read = (callback) => {
+  conn.addItems(tag("ReturnInputs"));
+  conn.readAllItems(callback);
+};
 const tag = (tag) => {
   switch (tag) {
-    case "BlinkingLights":
+    case "ActivateOutput1":
+      return "B3:0/0";
+    case "ActivateOutput2":
       return "B3:0/1";
-    case "Stop":
+    case "ActivateOutput3":
+      return "B3:0/2";
+    case "ActivateOutput4":
+      return "B3:0/3";
+    case "ActivateOutput5":
+      return "B3:0/4";
+    case "ActivateOutput6":
       return "B3:0/5";
-    case "LightOn":
-      return "I1:0/0";
+    case "ActivateOutput7":
+      return "B3:0/6";
+    case "ActivateOutput8":
+      return "B3:0/7";
+    case "ReturnInputs":
+      return [
+        "I:0/0",
+        "I:0/1",
+        "I:0/2",
+        "I:0/3",
+        "I:0/4",
+        "I:0/5",
+        "I:0/6",
+        "I:0/7",
+      ];
   }
 };
 
 module.exports = {
   modify,
+  read,
 };

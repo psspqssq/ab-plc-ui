@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
 app.get("/plc/add/:address/:value", (req, res) => {
   console.log(req.params);
   if (Object.keys(req.params) < 2) {
-    res.status(500).send({ message: "<h1n1>Albahaca</h1n1>" });
+    res.status(500).send({ message: "<h1n1>Invalid Request</h1n1>" });
   } else {
     plc.modify(req.params.address, req.params.value, (response) => {
       console.log("Sending a response");
@@ -20,6 +20,12 @@ app.get("/plc/add/:address/:value", (req, res) => {
       res.status(200).send({ response });
     });
   }
+});
+
+app.get("/plc/read/cableinputs", (req, res) => {
+  plc.read((response, values) => {
+    res.status(200).send({ values });
+  });
 });
 
 app.listen(port, () => {
