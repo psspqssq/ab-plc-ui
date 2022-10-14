@@ -3,6 +3,8 @@ var conn = new nodepccc();
 
 conn.initiateConnection({ port: 44818, host: "192.168.0.20" });
 
+const validateTest = () => {};
+
 const modify = (address, value, callback) => {
   if (!address || !value) {
     return "Albahaca";
@@ -14,6 +16,13 @@ const modify = (address, value, callback) => {
 const read = (callback) => {
   conn.addItems(tag("ReturnInputs"));
   conn.readAllItems(callback);
+};
+const test = (params, callback) => {
+  conn.writeItems(tag(params.output), 1);
+  conn.readAllItems((response, values) => {
+    callback(values);
+    conn.writeItems(tag(params.output), 0);
+  });
 };
 const tag = (tag) => {
   switch (tag) {
@@ -46,8 +55,10 @@ const tag = (tag) => {
       ];
   }
 };
+conn.addItems(tag("ReturnInputs"));
 
 module.exports = {
   modify,
   read,
+  test,
 };

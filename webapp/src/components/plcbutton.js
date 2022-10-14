@@ -56,7 +56,7 @@ export const PLCButton = (props) => {
           setState({ ...state, color: "gray", activated: false });
         }
         axios
-          .get("http://192.168.0.25:4000/plc/read/cableinputs")
+          .get("http://192.168.0.14:4000/plc/read/cableinputs")
           .then((response) => {
             props.returnValues(response.data.values);
           });
@@ -68,7 +68,7 @@ export const PLCButton = (props) => {
           setState({ ...state, color: "green", activated: true });
         }
         axios
-          .get("http://192.168.0.25:4000/plc/read/cableinputs")
+          .get("http://192.168.0.14:4000/plc/read/cableinputs")
           .then((response) => {
             props.returnValues(response.data.values);
           });

@@ -17,14 +17,24 @@ app.get("/plc/add/:address/:value", (req, res) => {
     plc.modify(req.params.address, req.params.value, (response) => {
       console.log("Sending a response");
       console.log(response);
-      res.status(200).send({ response });
+      res.send({ response });
     });
   }
 });
 
 app.get("/plc/read/cableinputs", (req, res) => {
   plc.read((response, values) => {
-    res.status(200).send({ values });
+    res.send({ values });
+  });
+});
+
+app.get("/plc/test/twoway/:output", (req, res) => {
+  plc.test(req.params, (values) => {
+    try {
+      res.send({ values });
+    } catch (ex) {
+      console.log(ex);
+    }
   });
 });
 
