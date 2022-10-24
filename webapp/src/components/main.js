@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PLCButton } from "./PLCButton";
+import { PLCButton } from "./plcbutton";
 import TestButton from "./TestButton";
 import "../styles/main.css";
 

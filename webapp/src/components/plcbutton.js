@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Status } from "./Status";
+import { Status } from "./status";
 import styled from "styled-components";
 
 const GreenButton = styled.div`
